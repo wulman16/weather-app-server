@@ -46,6 +46,22 @@ app.get(`/weather`, (req, res) => {
   });
 });
 
+app.get(`/help/*`, (req, res) => {
+  res.render(`404`, {
+    title: 404,
+    name: `Will Ulman`,
+    message: `Help article not found!`
+  });
+});
+
+app.get(`*`, (req, res) => {
+  res.render(`404`, {
+    title: 404,
+    name: `Will Ulman`,
+    message: `Page not found :(`
+  });
+});
+
 app.listen(3002, () => {
   console.log(`Server is up on port 3002!`);
 });
