@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="icon" href="/img/weather.png">
   <link rel="stylesheet" href="/css/styles.css" />
-  <script src="./js/app.js"></script>
   <title>{{title}}</title>
 </head>
 
@@ -15,8 +14,19 @@
   <div class="main-content">
     {{>header}}
     <p>Use this site to get your weather! :)</p>
+
+    <form id="weather-form">
+      <input placeholder="Location">
+      <button>Search</button>
+    </form>
+  </div>
+  <div class="weather-output">
+    <p id="location-data"></p>
+    <p id="forecast-data"></p>
+    <p id="error-message"></p>
   </div>
   {{>footer}}
+  <script src="./js/app.js"></script>
 </body>
 
 </html>
