@@ -1,6 +1,14 @@
+/* eslint-disable no-undef */
 const path = require(`path`);
 const express = require(`express`);
 const hbs = require(`hbs`);
+const geocode = require(`./utils/geocode`);
+const forecast = require(`./utils/weather`);
+
+// Handle API keys securely
+require(`dotenv`).config();
+DARKSKY_API_KEY = process.env.DARKSKY_API_KEY;
+MAPBOX_API_KEY = process.env.MAPBOX_API_KEY;
 
 const app = express();
 
@@ -46,9 +54,22 @@ app.get(`/weather`, (req, res) => {
     });
   }
 
-  res.send({
-    forecast: `Rain!`,
-    location: req.query.location
+  geocode(req.query.location, (error, geoData) => {
+    if (error) {
+      return res.send({ error });
+    }
+
+    forecast(geoData, (error, weatherData) => {
+      if (error) {
+        return res.send({ error });
+      }
+
+      res.send({
+        location: geoData.placeName,
+        forecast: weatherData,
+        address: req.query.location
+      });
+    });
   });
 });
 
