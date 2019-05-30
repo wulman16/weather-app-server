@@ -40,9 +40,15 @@ app.get(`/help`, (req, res) => {
 });
 
 app.get(`/weather`, (req, res) => {
+  if (!req.query.location) {
+    return res.send({
+      error: `Location must be provided!`
+    });
+  }
+
   res.send({
     forecast: `Rain!`,
-    location: `Atlanta`
+    location: req.query.location
   });
 });
 
