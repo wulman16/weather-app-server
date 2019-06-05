@@ -1,5 +1,5 @@
 const getWeather = location => {
-  fetch(`http://localhost:3002/weather/?location=${location}`)
+  fetch(`/weather/?location=${location}`)
     .then(res => res.json())
     .then(data => {
       const location = document.getElementById(`location-data`);
