@@ -1,5 +1,5 @@
 const getWeather = location => {
-  fetch(`/weather/?location=${location}`, {
+  fetch("/weather/?location=" + location, {
     "Content-Type": "application/json",
     // prettier-ignore
     "Accept": "application/json"
