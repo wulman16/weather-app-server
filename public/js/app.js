@@ -4,9 +4,7 @@ const getWeather = location => {
     // prettier-ignore
     "Accept": "application/json"
   })
-    // .then(res => res.json())
-    .then(res => res.text())
-    .then(text => console.log(text))
+    .then(res => res.json())
     .then(data => {
       const location = document.getElementById(`location-data`);
       const forecast = document.getElementById(`forecast-data`);
