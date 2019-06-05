@@ -1,5 +1,9 @@
 const getWeather = location => {
-  fetch(`/weather/?location=${location}`)
+  fetch(`/weather/?location=${location}`, {
+    "Content-Type": "application/json",
+    // prettier-ignore
+    "Accept": "application/json"
+  })
     .then(res => res.json())
     .then(data => {
       const location = document.getElementById(`location-data`);
